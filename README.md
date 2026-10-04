@@ -1,11 +1,13 @@
-# Vietnam Government Tenders MCP
+# Vietnam Company Registry & Government Tenders MCP
 
-Connect your AI assistant to Vietnam National E-Procurement System data through [The Company Atlas](https://thecompanyatlas.com) and the Model Context Protocol.
+Connect your AI assistant to Vietnamese company registry and National E-Procurement System data through [The Company Atlas](https://thecompanyatlas.com) and the Model Context Protocol.
 
-Data is sourced from [muasamcong.mpi.gov.vn](https://muasamcong.mpi.gov.vn).
+Tender data is sourced from [muasamcong.mpi.gov.vn](https://muasamcong.mpi.gov.vn).
 
 Search:
 
+- Registered enterprises by English or Vietnamese name, MST (tax identification number), enterprise type, VSIC industry and address
+- Company profiles with legal representative and tender history — the MST links each company to the tenders it bid on and won
 - Procurement notices, plans, projects, contracts, quote requests, and results
 - Procuring entities and investors
 - Tender packages and budgets
@@ -23,14 +25,16 @@ Add this URL as a custom MCP connector in Claude, Cursor, or another MCP-compati
 
 - Transport: Streamable HTTP
 - Auth: Google OAuth
-- Docs: [thecompanyatlas.com/mcp/connect](https://thecompanyatlas.com/mcp/connect)
+- Docs: [thecompanyatlas.com/tools/vietnam-company-tenders](https://thecompanyatlas.com/tools/vietnam-company-tenders)
 
 ## Tiếng Việt
 
-Vietnam Government Tenders MCP cho phép trợ lý AI tra cứu dữ liệu từ Hệ thống mạng đấu thầu quốc gia Việt Nam.
+Vietnam Company Registry & Government Tenders MCP cho phép trợ lý AI tra cứu thông tin doanh nghiệp Việt Nam và dữ liệu từ Hệ thống mạng đấu thầu quốc gia.
 
 Bạn có thể:
 
+- Tra cứu doanh nghiệp theo tên tiếng Anh hoặc tên tiếng Việt, mã số thuế (MST), loại hình doanh nghiệp, ngành nghề (VSIC) và địa chỉ
+- Xem thông tin doanh nghiệp: người đại diện theo pháp luật, ngày thành lập, trạng thái và lịch sử tham gia, trúng thầu
 - Tra cứu thông báo mời thầu, kế hoạch lựa chọn nhà thầu, dự án, hợp đồng, yêu cầu báo giá và kết quả lựa chọn nhà thầu
 - Tìm kiếm theo tên hoặc mã thông báo, mã gói thầu, mã dự án và mã hợp đồng
 - Lọc theo bên mời thầu, nhà đầu tư, lĩnh vực, tỉnh thành, trạng thái và ngày công khai
@@ -45,12 +49,37 @@ https://thecompanyatlas.com/mcp/vietnam
 
 Đăng nhập bằng Google khi được yêu cầu. Sau khi kết nối, bạn có thể thử:
 
+- *"Tra cứu doanh nghiệp có mã số thuế 0110399637 và các gói thầu đã trúng."*
 - *"Tìm các thông báo mời thầu thiết bị y tế được công khai trong năm 2025."*
 - *"Liệt kê các gói thầu của bên mời thầu này và tổng hợp giá trị."*
 - *"Tìm các gói thầu có sự tham gia của Viettel và xác định đơn vị trúng thầu."*
 - *"Hiển thị các nhà thầu và giá trị dự toán của hồ sơ đấu thầu này."*
 
 ## Tools
+
+### `Vietnam_search_companies`
+
+Search Vietnamese enterprises. Filters are combined with AND logic; include at least one.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `q` | string, optional | Name substring, English or Vietnamese (with diacritics), 3–120 characters |
+| `entityType` | string, optional | Enterprise type substring, e.g. `Joint Stock` |
+| `vsic` | string, optional | VSIC industry code prefix, 2–5 digits, e.g. `4100` |
+| `address` | string, optional | Head-office address substring, e.g. `Đà Nẵng` |
+| `active` | boolean, optional | Filter by active status |
+| `establishedFrom` / `establishedTo` | date, optional | Establishment date range, `YYYY-MM-DD` |
+| `page` / `limit` | integer, optional | Pagination, `limit` up to 50 (default 20) |
+
+Returns `{ data, total, page, limit }`. The company `id` is `VN` + the MST.
+
+### `Vietnam_get_company`
+
+Full profile by MST (e.g. `0110399637`, with or without the `VN` prefix): former names, short name, legal representative, contact email, and a tender summary — participation count, award count and the 20 most recent participations.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `mst` | string | MST tax identification number |
 
 ### `Vietnam_list_tenders`
 
@@ -141,6 +170,8 @@ Example:
 
 ## Example prompts
 
+- *"Find active joint stock companies in Đà Nẵng in building construction (VSIC 4100)."*
+- *"Show the profile and tender wins for MST 0110399637."*
 - *"Find Vietnamese contract notices for medical equipment published in 2025."*
 - *"Show procurement records from this procuring entity and summarize their values."*
 - *"Find tenders involving this supplier and identify awarded records."*
@@ -150,6 +181,6 @@ Example:
 
 1. Go to [claude.ai/customize/connectors](https://claude.ai/customize/connectors)
 2. Click **Add custom connector**
-3. Name it **Vietnam Government Tenders** and paste `https://thecompanyatlas.com/mcp/vietnam`
+3. Name it **Vietnam Companies & Tenders** and paste `https://thecompanyatlas.com/mcp/vietnam`
 4. Save and sign in with Google when prompted
 

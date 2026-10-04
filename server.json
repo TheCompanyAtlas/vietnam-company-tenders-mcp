@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.IndoTender/vietnam-tenders",
-  "title": "Vietnam Government Tenders",
-  "description": "Search Vietnam National E-Procurement System records, packages, participants, and awards.",
-  "version": "1.0.0",
+  "name": "io.github.TheCompanyAtlas/vietnam-company-tenders",
+  "title": "Vietnam Company Registry & Government Tenders",
+  "description": "Vietnam company search by name and MST tax code, plus e-procurement tenders, bidders and awards.",
+  "version": "1.1.0",
   "repository": {
-    "url": "https://github.com/IndoTender/vietnam-tenders-mcp",
+    "url": "https://github.com/TheCompanyAtlas/vietnam-company-tenders-mcp",
     "source": "github"
   },
-  "websiteUrl": "https://thecompanyatlas.com/mcp/connect",
+  "websiteUrl": "https://thecompanyatlas.com/tools/vietnam-company-tenders",
   "remotes": [
     {
       "type": "streamable-http",
