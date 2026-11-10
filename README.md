@@ -18,7 +18,7 @@ The MCP connection is provided by The Company Atlas. This repository does not ru
 ## Connect
 
 ```text
-https://thecompanyatlas.com/mcp/vietnam
+https://thecompanyatlas.com/mcp/vn
 ```
 
 Add this URL as a custom MCP connector in Claude, Cursor, or another MCP-compatible client. Sign in with Google when prompted.
@@ -44,7 +44,7 @@ Bạn có thể:
 Để kết nối, hãy thêm URL sau vào Claude, Cursor hoặc ứng dụng hỗ trợ MCP:
 
 ```text
-https://thecompanyatlas.com/mcp/vietnam
+https://thecompanyatlas.com/mcp/vn
 ```
 
 Đăng nhập bằng Google khi được yêu cầu. Sau khi kết nối, bạn có thể thử:
@@ -181,6 +181,6 @@ Example:
 
 1. Go to [claude.ai/customize/connectors](https://claude.ai/customize/connectors)
 2. Click **Add custom connector**
-3. Name it **Vietnam Companies & Tenders** and paste `https://thecompanyatlas.com/mcp/vietnam`
+3. Name it **Vietnam Companies & Tenders** and paste `https://thecompanyatlas.com/mcp/vn`
 4. Save and sign in with Google when prompted
 

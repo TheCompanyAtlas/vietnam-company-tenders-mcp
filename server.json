@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://thecompanyatlas.com/mcp/vietnam"
+      "url": "https://thecompanyatlas.com/mcp/vn"
     }
   ]
 }
