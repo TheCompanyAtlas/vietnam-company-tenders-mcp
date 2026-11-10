@@ -3,7 +3,7 @@
   "name": "io.github.TheCompanyAtlas/vietnam-company-tenders",
   "title": "Vietnam Company Registry & Government Tenders",
   "description": "Vietnam company search by name and MST tax code, plus e-procurement tenders, bidders and awards.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": {
     "url": "https://github.com/TheCompanyAtlas/vietnam-company-tenders-mcp",
     "source": "github"
